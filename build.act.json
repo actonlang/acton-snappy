@@ -1,0 +1,12 @@
+{
+    "dependencies": {},
+    "zig_dependencies": {
+        "snappy": {
+            "url": "https://github.com/actonlang/snappy/archive/refs/heads/zig-build-v0.13.tar.gz",
+            "hash": "122098ef38310268cabd22b1fa7c9332da0a9b845a5f380566783d98c55359c8e678",
+            "artifacts": [
+                "snappy-c"
+            ]
+        }
+    }
+}
