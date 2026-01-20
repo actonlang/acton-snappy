@@ -2,8 +2,8 @@
     "dependencies": {},
     "zig_dependencies": {
         "snappy": {
-            "url": "https://github.com/actonlang/snappy/archive/refs/heads/zig-build-v0.14.tar.gz",
-            "hash": "N-V-__8AAJzPMgAasBUsos_PjWyuVgcZRLPh4wDKNDSaa5Fe",
+            "url": "https://github.com/actonlang/snappy/archive/refs/heads/zig-build-v0.15.tar.gz",
+            "hash": "N-V-__8AAO7PMgDU00XnxxnFu9Lk35foYV8_eqPJb17g8B1o",
             "artifacts": [
                 "snappy-c"
             ]
