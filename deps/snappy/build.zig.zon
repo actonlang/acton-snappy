@@ -1,0 +1,17 @@
+.{
+    .name = .snappy,
+    .version = "1.1.10+1",
+    .fingerprint = 0xcbfb5fb85963753c, // Changing this has security and trust implications.
+    .minimum_zig_version = "0.16.0",
+    .dependencies = .{
+        .snappy_upstream = .{
+            .url = "https://github.com/google/snappy/archive/refs/tags/1.1.10.tar.gz",
+            .hash = "N-V-__8AAAvGMgBtdJrEI8Qbax5WLz0QKm43CCt1sjEhZhHX",
+            .lazy = false,
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

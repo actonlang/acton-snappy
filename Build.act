@@ -3,8 +3,7 @@ fingerprint = 0x17a9a86a4ebc799b
 dependencies = {}
 zig_dependencies = {
     "snappy": (
-        url="https://github.com/actonlang/snappy/archive/refs/heads/zig-build-v0.15.tar.gz",
-        hash="N-V-__8AAO7PMgDU00XnxxnFu9Lk35foYV8_eqPJb17g8B1o",
+        path="deps/snappy",
         artifacts=["snappy-c"]
     )
 }
