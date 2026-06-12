@@ -1,5 +1,5 @@
-name = "acton_snappy"
-fingerprint = 0x17a9a86a4ebc799b
+name = "snappy"
+fingerprint = 0xcbfb5fb85fc2edd4
 dependencies = {}
 zig_dependencies = {
     "snappy": (

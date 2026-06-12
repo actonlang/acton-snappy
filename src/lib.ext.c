@@ -1,11 +1,11 @@
 #include <rts/log.h>
 #include <snappy-c.h>
 
-void snappyQ___ext_init__() {
+void snappyQ_libQ___ext_init__() {
     // NOP
 }
 
-B_bytes snappyQ_compress (B_bytes data) {
+B_bytes snappyQ_libQ_compress (B_bytes data) {
     char *input;
     char *compressed;
     size_t input_len;
@@ -30,7 +30,7 @@ B_bytes snappyQ_compress (B_bytes data) {
     return ret;
 }
 
-B_bytes snappyQ_decompress (B_bytes data) {
+B_bytes snappyQ_libQ_decompress (B_bytes data) {
     char *input;
     char *uncompressed;
     size_t input_len;
