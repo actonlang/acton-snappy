@@ -26,7 +26,7 @@ B_bytes snappyQ_libQ_compress (B_bytes data) {
     status = snappy_compress(input, input_len, compressed, &compressed_len);
 
     if (SNAPPY_OK == status) {
-        ret = actBytesFromCStringLength(compressed, (int)compressed_len);
+        ret = actBytesFromCStringLength(compressed, compressed_len);
     } else {
         RAISE_EXC(SNAPPY_INVALID_INPUT == status
             ? &snappyQ_libQ_invalid_input_error
@@ -59,7 +59,7 @@ B_bytes snappyQ_libQ_decompress (B_bytes data) {
     status = snappy_uncompress(input, input_len, uncompressed, &uncompressed_len);
 
     if (SNAPPY_OK == status) {
-        ret = actBytesFromCStringLength(uncompressed, (int)uncompressed_len);
+        ret = actBytesFromCStringLength(uncompressed, uncompressed_len);
     } else {
         RAISE_EXC(SNAPPY_INVALID_INPUT == status
             ? &snappyQ_libQ_invalid_input_error
