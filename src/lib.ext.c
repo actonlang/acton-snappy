@@ -22,7 +22,7 @@ B_bytes snappyQ_libQ_compress (B_bytes data) {
     input_len = (size_t)data->nbytes;
 
     compressed_len = snappy_max_compressed_length(input_len);
-    compressed = acton_malloc(compressed_len);
+    compressed = acton_malloc_atomic(compressed_len);
     status = snappy_compress(input, input_len, compressed, &compressed_len);
 
     if (SNAPPY_OK == status) {
@@ -55,7 +55,12 @@ B_bytes snappyQ_libQ_decompress (B_bytes data) {
             : &snappyQ_libQ_small_buffer_error);
     }
 
-    uncompressed = acton_malloc(uncompressed_len);
+    // No snappy element produces more than 64 bytes per 3 input bytes
+    if (uncompressed_len > (input_len / 3 + 1) * 64) {
+        RAISE_EXC(&snappyQ_libQ_invalid_input_error);
+    }
+
+    uncompressed = acton_malloc_atomic(uncompressed_len);
     status = snappy_uncompress(input, input_len, uncompressed, &uncompressed_len);
 
     if (SNAPPY_OK == status) {
