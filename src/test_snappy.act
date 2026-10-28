@@ -1,0 +1,35 @@
+import testing
+import lib as snappy
+
+def length_header(n: int) -> list[int]:
+    res = []
+    while n >= 128:
+        res.append(n % 128 + 128)
+        n = n // 128
+    res.append(n)
+    return res
+
+def _test_roundtrip():
+    for i in [b'', b'hello', b'hello world ' * 10000]:
+        c = snappy.compress(i)
+        d = snappy.decompress(c)
+        testing.assertEqual(i, d)
+
+def _test_decompress_length_header_without_data():
+    # The varint header claims 4294967295 bytes but no data follows
+    try:
+        snappy.decompress(b'\xff\xff\xff\xff\x0f')
+    except ValueError as e:
+        testing.assertEqual(e.error_message, "Invalid input")
+        return
+    testing.error("decompress accepted a length header without data")
+
+def _test_decompress_max_expansion():
+    # One 1-byte literal, then 3-byte copies of 64 bytes at offset 1, the
+    # most output per input byte the format allows
+    k = 10000
+    raw = length_header(1 + 64 * k) + [0x00, 0x61]
+    for i in range(k):
+        raw.extend([0xFE, 0x01, 0x00])
+    d = snappy.decompress(bytes(raw))
+    testing.assertEqual(d, b'a' * (1 + 64 * k))
